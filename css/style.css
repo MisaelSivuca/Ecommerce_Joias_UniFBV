@@ -18,7 +18,7 @@
 
 /*plano de fundo do login*/
 body {
-  background-image: url(../img/capa\ de\ fundo.jpg);
+  background-image: url('../img/capa\ de\ fundo.jpg');
   background-size: cover;
   background-position-y: -200px;
 }
