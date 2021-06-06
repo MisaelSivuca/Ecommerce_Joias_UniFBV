@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -18,10 +16,11 @@ public class UsuarioController {
 
     @Autowired
     UsuarioService usuarioService;
-    
-    @RequestMapping(value = "/front/cadastroCliente", method = RequestMethod.GET)
+
+    // Retorna a pag cdastro de usuário
+    @RequestMapping(value = "/front/cadastroUsuario", method = RequestMethod.GET)
     public String getUsuarioForm(){
-        return "/front/cadastroCliente";
+        return "/front/cadastroUsuario";
     }
 
     @RequestMapping(value = "/front/login", method = RequestMethod.GET)
@@ -29,13 +28,16 @@ public class UsuarioController {
         return "/front/login";
     }
 
-    @RequestMapping(value = "/front/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/front/cadastroUsuario", method = RequestMethod.POST)
     public String novoUsuario(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes){
         if (result.hasErrors()) {
-            return "redirect:/front/login";
+            attributes.addFlashAttribute("mensagem", "Verifique se os campos foram preenchidos corretamente");
+            return "redirect:/front/cadastroUsuario";
         }
         usuarioService.save(usuario);
-        return "redirect:usuCadSucesso";
+        return "redirect:/front/usuarioCadSucesso";
     }
+
+
 
 }
