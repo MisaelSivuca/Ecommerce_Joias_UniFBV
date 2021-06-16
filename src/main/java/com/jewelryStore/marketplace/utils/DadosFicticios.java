@@ -2,9 +2,11 @@ package com.jewelryStore.marketplace.utils;
 
 
 import com.jewelryStore.marketplace.model.entity.Categoria;
+import com.jewelryStore.marketplace.model.entity.Estado;
 import com.jewelryStore.marketplace.model.entity.Produto;
 import com.jewelryStore.marketplace.model.entity.Usuario;
 import com.jewelryStore.marketplace.repository.CategoriaRepository;
+import com.jewelryStore.marketplace.repository.EstadoRepository;
 import com.jewelryStore.marketplace.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
@@ -21,6 +23,9 @@ public class DadosFicticios {
 
     @Autowired
     UsuarioRepository usuarioRepository;
+
+    @Autowired
+    EstadoRepository estadoRepository;
 
    /*  Esta annotation responsavel por invocar esse método na inicialização */
    //@PostConstruct
@@ -48,7 +53,7 @@ public class DadosFicticios {
         }
     }
 
-    //@PostConstruct
+    @PostConstruct
     public void salvandoUsuarioFicticio(){
 
         Usuario us = new Usuario();
@@ -65,10 +70,34 @@ public class DadosFicticios {
         us.setCidade("Recife");
         us.setLogin("J@ze12356");
         us.setSenha("278@gd#gh7a");
+        //usuarioRepository.save(us);
 
-        usuarioRepository.save(us);
+        Usuario us1 = new Usuario();
+        us1.setNome("Magda Costa");
+        us1.setEmail("MdaGCosta@gmail.com");
+        us1.setCpf("45678985477");
+        us1.setTelefone("81 9 98446655");
+        us1.setLogradouro("Rua das Flores");
+        us1.setNumero("345");
+        us1.setComplemento("Casa");
+        us1.setBairro("Imbiribeira");
+        us1.setCep("58425-000");
+        us1.setEstado("PE");
+        us1.setCidade("Recife");
+        us1.setLogin("Mda4514@4");
+        us1.setSenha("Mhjs456787");
+
+        usuarioRepository.save(us1);
     }
 
 
+    //@PostConstruct
+    public void salvandoEstadoProdutos(){
+        Estado estado01 = new Estado("Novo");
+        Estado estado02 = new Estado("Usado");
+        estadoRepository.save(estado01);
+        estadoRepository.save(estado02);
+
+    }
 
 }

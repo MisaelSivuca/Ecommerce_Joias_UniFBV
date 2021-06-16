@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -61,6 +62,22 @@ public class Usuario implements Serializable {
 
     @Column(name = "cidade", nullable = false)
     private String cidade;
+
+    @OneToMany
+    @JoinColumn(name = "usuario_id")
+    private List<Produto> produtos;
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
 
     public String getCidade() {
         return cidade;
