@@ -1,7 +1,5 @@
 package com.jewelryStore.marketplace.model.entity;
 
-import com.jewelryStore.marketplace.model.Enums.Estado;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -33,18 +31,55 @@ public class Produto implements Serializable {
     @NotNull
     private int quantidade;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name="estado")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tb_estado")
     private Estado estado;
 
-    @ManyToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tb_categoria")
     private Categoria categoria;
 
     @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+
+    public Produto(){
+
+    }
+
+    public Produto(
+            Long id,
+            @NotNull String nome,
+            @NotNull Double preco,
+            @NotNull String descricao,
+            @NotNull int quantidade,
+            Estado estado,
+            Categoria categoria,
+            Usuario usuario) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.descricao = descricao;
+        this.quantidade = quantidade;
+        this.estado = estado;
+        this.categoria = categoria;
+        this.usuario = usuario;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public static byte getNomeLength() {
+        return NOME_LENGTH;
+    }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

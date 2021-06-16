@@ -18,4 +18,14 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
+    @Override
+    public Usuario delete(Usuario usuario) {
+        return null;
+    }
+
+    @Override
+    public Usuario findById(Long id) {
+        return usuarioRepository.findById(id).get();
+    }
+
 }

@@ -17,9 +17,9 @@ public class ProdutoController {
     @Autowired
     ProdutoService produtoService;
 
-    @RequestMapping(value = "/front/produtos", method = RequestMethod.GET)
+    @RequestMapping(value = "/produtos", method = RequestMethod.GET)
     public ModelAndView getProdutos(){
-        ModelAndView modelAndView = new ModelAndView("/front/produtos");
+        ModelAndView modelAndView = new ModelAndView("/produtos");
         List<Produto> produtos =  produtoService.findAll();
         modelAndView.addObject("produtos",produtos);
         return modelAndView;
@@ -27,15 +27,15 @@ public class ProdutoController {
 
     @RequestMapping(value = "/produtos/{id}", method = RequestMethod.GET)
     public ModelAndView getDetalhesProduto(@PathVariable("id") long id){
-        ModelAndView modelAndView = new ModelAndView("/front/detalhesProduto");
+        ModelAndView modelAndView = new ModelAndView("/detalhesProduto");
         Produto produto =  produtoService.findById(id);
         modelAndView.addObject("produto",produto);
         return modelAndView;
     }
 
-    @RequestMapping(value ="/front/novoProduto", method = RequestMethod.GET)
+    @RequestMapping(value ="/novoProduto", method = RequestMethod.GET)
     public String getPosForm(){
-        return "/front/cadastroProdutos";
+        return "/cadastroProdutos";
     }
 
 }

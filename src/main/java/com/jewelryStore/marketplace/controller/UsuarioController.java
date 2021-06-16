@@ -5,11 +5,13 @@ import com.jewelryStore.marketplace.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.validation.Valid;
+
 
 @Controller
 public class UsuarioController {
@@ -17,25 +19,46 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
-    // Retorna a pag cdastro de usuário
-    @RequestMapping(value = "/front/cadastroUsuario", method = RequestMethod.GET)
+    @RequestMapping(value = "/cadastroUsuario", method = RequestMethod.GET)
     public String getUsuarioForm(){
-        return "/front/cadastroUsuario";
+        return "/cadastroUsuario";
     }
 
-    @RequestMapping(value = "/front/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/usuarioCadSucesso", method = RequestMethod.GET)
+    public String userSucess(){
+        return "/usuarioCadSucesso";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String getUsuarioEntrar(){
-        return "/front/login";
+        return "/login";
     }
 
-    @RequestMapping(value = "/front/cadastroUsuario", method = RequestMethod.POST)
+    @RequestMapping(value = "/cadastroUsuario", method = RequestMethod.POST)
     public String novoUsuario(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes){
         if (result.hasErrors()) {
             attributes.addFlashAttribute("mensagem", "Verifique se os campos foram preenchidos corretamente");
-            return "redirect:/front/cadastroUsuario";
+            return "redirect:/cadastroUsuario";
         }
         usuarioService.save(usuario);
-        return "redirect:/front/usuarioCadSucesso";
+        return "redirect:/usuarioCadSucesso";
+    }
+
+    @RequestMapping(value = "/usuario/{id}", method = RequestMethod.GET)
+    public ModelAndView getUsuario(@PathVariable("id") long id){
+        ModelAndView modelAndView = new ModelAndView("/usuario");
+        Usuario usuario =  usuarioService.findById(id);
+        modelAndView.addObject("usuario",usuario);
+        return modelAndView;
+    }
+
+
+
+
+
+    @RequestMapping(value = "/mensasgemValidacao", method = RequestMethod.GET)
+    public String msgValidacao(){
+        return "/mensasgemValidacao";
     }
 
 
