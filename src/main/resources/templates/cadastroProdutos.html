@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/front/produtos">
+                    <a class="nav-link" href="/produtos">
                         Store
                         <span class="sr-only">(current)</span>
                     </a>
@@ -34,38 +34,43 @@
         </div>
     </div>
 </nav>
-<!-- Page Content-->
+<!-- Conteúdo da Página-->
 <div class="container">
     <h1 class="display-5 text-center">Cadastre um Novo Produto</h1>
     <form class="form" id="register-form" method="post">
         <div class="row">
-            <div></div>
                 <!--Nome do produto-->
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Nome do Produto:</span>
+                    <span class="input-group-text" id="basic-addon1">Nome do Produto</span>
                     <label for="nome"></label>
                     <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do Produto" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
                 <!--Preço do produto-->
                 <div class="input-group mb-3">
-                    <span class="input-group-text"> Preço $ 0.00</span>
+                    <span class="input-group-text">Preço $ 0.00</span>
                     <label for="preco"></label>
                     <input type="text" class="form-control" name="preco" id="preco" aria-label="Dollar amount (with dot and two decimal places)">
                 </div>
+            </div>
+            <div class="col-6">
             <!--Quantidade do produto-->
             <div class="input-group mb-3">
                 <span class="input-group-text"> Quantidade</span>
                 <label for="quantidade"></label>
                 <input type="text" class="form-control" name="quantidade" id="quantidade">
             </div>
-
-                <!--Descrição do produto-->
-                <div class="mb-3">
-                    <label for="descricao" class="form-label">Descrição</label>
-                    <textarea class="form-control" name="descricao" id="descricao" rows="3"></textarea>
-                </div>
-
+            </div>
         </div>
+        <!--Descrição do produto-->
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <textarea class="form-control" name="descricao" id="descricao" rows="3"></textarea>
+        </div>
+
+
     </form>
 </div>
 <!-- Footer-->
