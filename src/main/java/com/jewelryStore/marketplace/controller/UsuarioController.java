@@ -52,10 +52,6 @@ public class UsuarioController {
         return modelAndView;
     }
 
-
-
-
-
     @RequestMapping(value = "/mensasgemValidacao", method = RequestMethod.GET)
     public String msgValidacao(){
         return "/mensasgemValidacao";

@@ -1,15 +1,12 @@
 package com.jewelryStore.marketplace.utils;
 
-
 import com.jewelryStore.marketplace.model.entity.Categoria;
 import com.jewelryStore.marketplace.model.entity.Estado;
-import com.jewelryStore.marketplace.model.entity.Produto;
 import com.jewelryStore.marketplace.model.entity.Usuario;
 import com.jewelryStore.marketplace.repository.CategoriaRepository;
 import com.jewelryStore.marketplace.repository.EstadoRepository;
 import com.jewelryStore.marketplace.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,12 +30,18 @@ public class DadosFicticios {
 
         List<Categoria> categorias = new ArrayList<>();
 
-        Categoria categoria1 = new Categoria("Brinco");
-        Categoria categoria2 = new Categoria("Anel");
-        Categoria categoria3 = new Categoria("Gargantilha");
-        Categoria categoria4 = new Categoria("Pulseira");
-        Categoria categoria5 = new Categoria("Tornozeleira");
-        Categoria categoria6 = new Categoria("Colar");
+        Categoria categoria1 = new Categoria();
+        categoria1.setDescricao("Brinco");
+        Categoria categoria2 = new Categoria();
+        categoria2.setDescricao("Anel");
+        Categoria categoria3 = new Categoria();
+        categoria3.setDescricao("Gargantilha");
+        Categoria categoria4 = new Categoria();
+        categoria4.setDescricao("Pulseira");
+        Categoria categoria5 = new Categoria();
+        categoria5.setDescricao("Tornozeleira");
+        Categoria categoria6 = new Categoria();
+        categoria6.setDescricao("Colar");
 
         categorias.add(categoria1);
         categorias.add(categoria2);
@@ -53,7 +56,7 @@ public class DadosFicticios {
         }
     }
 
-    @PostConstruct
+    // @PostConstruct
     public void salvandoUsuarioFicticio(){
 
         Usuario us = new Usuario();
@@ -87,14 +90,16 @@ public class DadosFicticios {
         us1.setLogin("Mda4514@4");
         us1.setSenha("Mhjs456787");
 
-        usuarioRepository.save(us1);
+      //  usuarioRepository.save(us1);
     }
 
 
     //@PostConstruct
     public void salvandoEstadoProdutos(){
-        Estado estado01 = new Estado("Novo");
-        Estado estado02 = new Estado("Usado");
+        Estado estado01 = new Estado();
+        estado01.setDescricao("Novo");
+        Estado estado02 = new Estado();
+        estado02.setDescricao("Usado");
         estadoRepository.save(estado01);
         estadoRepository.save(estado02);
 

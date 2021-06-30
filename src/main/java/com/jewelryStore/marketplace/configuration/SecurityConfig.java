@@ -1,5 +1,6 @@
 package com.jewelryStore.marketplace.configuration;
-import org.springframework.context.annotation.Configuration;
+/**
+ * import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -7,8 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] AUTH_LIST = {
@@ -29,15 +30,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
     }
 
-    @Override
+   // @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.inMemoryAuthentication()
                 .withUser("misael").password("{noop}123456789").roles("ADMIN");
     }
 
-    @Override
+   // @Override
     public void configure(WebSecurity web) throws Exception{
         web.ignoring().antMatchers("/assets/**");
        web.ignoring().antMatchers(  "/img/**");
     }
 }
+**/

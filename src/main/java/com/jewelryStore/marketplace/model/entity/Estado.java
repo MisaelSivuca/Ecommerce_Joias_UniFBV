@@ -1,8 +1,22 @@
 package com.jewelryStore.marketplace.model.entity;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="tb_estado")
 public class Estado {
@@ -14,33 +28,5 @@ public class Estado {
     @Column(name = "descricao", nullable = false)
     @NotNull
     private String descricao;
-
-    public Estado(){
-
-    }
-    public Estado(@NotNull String descricao){
-        this.descricao = descricao;
-    }
-
-    public Estado(Long id, @NotNull String descricao) {
-        this.id = id;
-        this.descricao = descricao;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 
 }
